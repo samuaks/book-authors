@@ -171,7 +171,7 @@ const RootMutationType = new GraphQLObjectType({
             },
             resolve: (parent, args) => {
                 const book = books.find(book => book.id === args.id);
-                books.splice(books.indexOf(book), 1);
+                if (book) books.splice(books.indexOf(book), 1);
                 return book
             }
         },
@@ -183,7 +183,7 @@ const RootMutationType = new GraphQLObjectType({
             },
             resolve: (parent, args) => {
                 const author = authors.find(author => author.id === args.id);
-                authors.splice(authors.indexOf(author), 1);
+                if (author) authors.splice(authors.indexOf(author), 1);
                 return author
             }
         }
